@@ -16,8 +16,10 @@ module.exports = function (app) {
     app.get("/api/waitlist", function (req, res) {
         res.json(expenseData);
     });
-    app.post('/api/posts', verifyToken /* Middleware function */ , (req, res) => {
-        jwt.verify(req.token, 'secretkey', (err, authData) => {
+    
+    /*
+    app.post('/api/posts', verifyToken /* Middleware function */ /*, (req, res) => {*/
+ /*       jwt.verify(req.token, 'secretkey', (err, authData) => {
             if (err) {
                 res.sendStatus(403);
             } else {
@@ -84,5 +86,5 @@ module.exports = function (app) {
             // Sends a Forbidden message if the bearer is undefined.
             res.sendStatus(403);
         }
-    }
-}
+    }*/
+} 
