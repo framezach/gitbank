@@ -29,6 +29,22 @@ module.exports = function (app) {
         });
 
     });
+
+    router.post('/signup', (req, res, next) => {
+        bcrypt.hash(req.body.password, 10, (err, hash) => {
+            if (err) {
+                return res.status(500).json({
+                    error: err
+                });
+            } else {
+                const user = new User({
+                    email: req.body.email,
+                    password: hash
+                })
+            }
+        })
+    })
+
     app.post('/api/login', (req, res) => {
         // callback function (asynch)
         // Usually you'd have a database full of users that you'd be getting a req. from
@@ -69,11 +85,4 @@ module.exports = function (app) {
             res.sendStatus(403);
         }
     }
-    // API POST requests
-    app.post("/api/userbase", function (req, res) {
-        // Server responds to requests and lets users know if they have an account or not
-        if (userData) {
-
-        }
-    })
 }
