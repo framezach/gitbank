@@ -19,9 +19,4 @@ app.use(express.static("public"));
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-// Listener.
-db.sequelize.synch({
-    force: true
-}).then(function () {
-    app.listen(PORT, () => console.log('Server started on port ' + PORT));
-})
+app.listen(PORT, () => console.log('Server started on port ' + PORT));
